@@ -12,20 +12,17 @@ https://registry.hub.docker.com/u/mcandre/docker-ubuntu-32bit/
 
 ```
 $ make
-docker run --rm --privileged -v $(pwd):/mnt -t mcandre/docker-ubuntu:hardy sh -c 'apt-get update && apt-get install -y debootstrap && mkdir /chroot && debootstrap --arch i386 breezy /chroot http://old-releases.ubuntu.com/ubuntu/ && cd /chroot && tar czvf /mnt/rootfs.tar.gz .'
+docker run --rm --privileged -v $(pwd):/mnt -t mcandre/docker-ubuntu:dapper sh -c 'apt-get update && apt-get install -y debootstrap && mkdir /chroot && debootstrap --arch i386 hoary /chroot http://old-releases.ubuntu.com/ubuntu/ && cd /chroot && tar czvf /mnt/rootfs.tar.gz .'
 ...
 
-docker build -t mcandre/docker-ubuntu-32bit:5.10 .
+docker build -t mcandre/docker-ubuntu-32bit:5.04 .
 Step 0 : FROM scratch
 Step 1 : MAINTAINER Andrew Pennebaker <andrew.pennebaker@gmail.com>
 Step 2 : ADD rootfs.tar.gz /
 Successfully built babc33fdd1bd
 
-docker run --rm mcandre/docker-ubuntu-32bit:5.10 sh -c 'cat /etc/*release*'
-DISTRIB_ID=Ubuntu
-DISTRIB_RELEASE=5.10
-DISTRIB_CODENAME=breezy
-DISTRIB_DESCRIPTION="Ubuntu (The Breezy Badger Release)"
+docker run --rm mcandre/docker-ubuntu-32bit:5.04 sh -c 'cat /etc/*release*'
+...
 ```
 
 # REQUIREMENTS
