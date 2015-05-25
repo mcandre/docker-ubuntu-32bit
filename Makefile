@@ -1,10 +1,10 @@
-IMAGE=mcandre/docker-ubuntu-32bit:7.04
+IMAGE=mcandre/docker-ubuntu-32bit:6.10
 ROOTFS=rootfs.tar.gz
 define GENERATE
 apt-get update && \
 apt-get install -y debootstrap && \
 mkdir /chroot && \
-debootstrap --arch i386 feisty /chroot http://old-releases.ubuntu.com/ubuntu/ && \
+debootstrap --arch i386 edgy /chroot http://old-releases.ubuntu.com/ubuntu/ && \
 cd /chroot && \
 tar czvf /mnt/rootfs.tar.gz .
 endef
@@ -12,7 +12,7 @@ endef
 all: run
 
 $(ROOTFS):
-	docker run --rm --privileged -v $$(pwd):/mnt -t ubuntu:15.04 sh -c '$(GENERATE)'
+	docker run --rm --privileged -v $$(pwd):/mnt -t mcandre/docker-ubuntu:hardy sh -c '$(GENERATE)'
 
 build: Dockerfile $(ROOTFS)
 	docker build -t $(IMAGE) .
