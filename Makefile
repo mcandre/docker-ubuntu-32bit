@@ -1,10 +1,10 @@
-IMAGE=mcandre/docker-ubuntu-32bit:10.10
+IMAGE=mcandre/docker-ubuntu-32bit:10.04
 ROOTFS=rootfs.tar.gz
 define GENERATE
 apt-get update && \
 apt-get install -y debootstrap && \
 mkdir /chroot && \
-debootstrap --arch i386 maverick /chroot http://old-releases.ubuntu.com/ubuntu/ && \
+debootstrap --arch i386 lucid /chroot http://old-releases.ubuntu.com/ubuntu/ && \
 cd /chroot && \
 tar czvf /mnt/rootfs.tar.gz .
 endef
