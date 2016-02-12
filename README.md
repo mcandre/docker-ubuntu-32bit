@@ -35,6 +35,7 @@ DISTRIB_DESCRIPTION="Ubuntu 12.04 LTS"
 ## Optional
 
 * [make](http://www.gnu.org/software/make/)
+* [Node.js](https://nodejs.org/en/) (for dockerlint)
 
 ## Debian/Ubuntu
 
